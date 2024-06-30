@@ -1,10 +1,8 @@
-const urlParams = new URLSearchParams(window.location.search);
-const email = urlParams.get('email');
-
-document.getElementById('email').innerHTML = email;
-
-// Simulate email open event
-setTimeout(() => {
-  document.getElementById('status').innerHTML = 'Aberto';
-  document.getElementById('opened').innerHTML = 'Sim';
-}, 2000); // Simulate email open after 2 seconds
+// Armazenar email aberto em um arquivo txt
+fetch('log.txt', {
+  method: 'POST',
+  body: new URLSearchParams(window.location.search).get('email') + '\n',
+  headers: {
+    'Content-Type': 'text/plain'
+  }
+});
